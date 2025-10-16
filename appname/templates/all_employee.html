@@ -1,0 +1,60 @@
+{% extends 'admin_base.html' %}
+
+{% block main %}
+<script type="text/javascript">
+    function checkpassword()
+    {
+        if(document.changepassword.newpassword.value!=document.changepassword.confirmpassword.value)
+        {
+            alert('New Password And Confirm Password Fields Does Not Match');
+            document.changepassword.confirmpassword.focus();
+            return false;
+        }
+        return true;
+    }
+
+
+
+</script>
+<div class="card shadow m-2">
+    <div class="card-body">
+        <h5 class="p-2 text-danger" style="border-bottom : 2px solid orange"> Employee Details</h5>
+        <div class="comtainer-fluid">
+            <table class="table table-bordered table-hover" id="example">
+                <thead class="text-dark bg-danger ">
+                <tr>
+                    <th>S.NO</th>
+                    <th>Emp Code</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email ID</th>
+                    <th>Contact Number</th>
+                    <th>Joining Date</th>
+                    <th>Actions</th> 
+                </tr>
+                </thead>
+                <tbody>
+                    {% for i in employee %}
+                    <tr>
+                        <td> {{forloop.counter}}</td>
+                        <td>{{i.empcode}}</td>
+                        <td> {{i.user.first_name }}</td>
+                        <td> {{i.user.last_name }}</td>
+                        <td>{{i.user.username }}</td>
+                        <td>{{i.contact}}</td>
+                        <td> {{i.joiningdate}}</td>
+                        <td> <a href="#" class="btn btn-sm btn-outline-primary">
+                            <i class="fas fa-edit"></i> Edit</a>
+                        </td>
+                    </tr>    
+
+                    {% endfor %}
+
+                </tbody>
+            </table>
+            
+        </div>        
+    </div>
+</div>
+{% endblock %}
+

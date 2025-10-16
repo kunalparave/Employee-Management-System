@@ -1,0 +1,76 @@
+{% extends 'emp_base.html' %}
+
+{% block main %}
+<div class="container mt-4">
+    <div class="card shadow-lg border-0 rounded-4">
+        <div class="card-header bg-gradient text-white text-center" 
+             style="background: linear-gradient(90deg, #ff8c00, #ff4500); border-radius: 10px 10px 0 0;">
+            <h4><i class="fas fa-edit"></i> Edit Work Experience</h4>
+        </div>
+
+        <div class="card-body">
+            <div class="d-flex justify-content-end">
+                <a href="{% url 'my_experience' %}" class="btn btn-info btn-sm">
+                    <i class="fas fa-eye"></i> View My Work Experience
+                </a>
+            </div>
+
+            <form method="post" class="mt-3">
+                {% csrf_token %}
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover shadow-sm">
+                        <thead class="bg-dark text-white">
+                            <tr>
+                                <th>Company Name</th>
+                                <th>Job Designation</th>
+                                <th>Salary</th>
+                                <th>Duration</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="text" name="company1name" class="form-control" value="{{ experience.company1name }}"></td>
+                                <td><input type="text" name="company1desig" class="form-control" value="{{ experience.company1desig }}"></td>
+                                <td><input type="text" name="company1salary" class="form-control" value="{{ experience.company1salary }}"></td>
+                                <td><input type="text" name="company1duration" class="form-control" value="{{ experience.company1duration }}"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" name="company2name" class="form-control" value="{{ experience.company2name }}"></td>
+                                <td><input type="text" name="company2desig" class="form-control" value="{{ experience.company2desig }}"></td>
+                                <td><input type="text" name="company2salary" class="form-control" value="{{ experience.company2salary }}"></td>
+                                <td><input type="text" name="company2duration" class="form-control" value="{{ experience.company2duration }}"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" name="company3name" class="form-control" value="{{ experience.company3name }}"></td>
+                                <td><input type="text" name="company3desig" class="form-control" value="{{ experience.company3desig }}"></td>
+                                <td><input type="text" name="company3salary" class="form-control" value="{{ experience.company3salary }}"></td>
+                                <td><input type="text" name="company3duration" class="form-control" value="{{ experience.company3duration }}"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-success px-4 py-2">
+                        <i class="fas fa-save"></i> Save Changes
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% if error == "no" %}
+<script>
+    alert('Work Experience Updated Successfully!');
+    window.location=('{% url "edit_myexperience" %}')
+</script>
+{% endif %}
+
+{% if error == "yes" %}
+<script>
+    alert('Something went wrong, please try again...');
+</script>
+{% endif %}
+
+{% endblock %}

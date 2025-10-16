@@ -1,0 +1,101 @@
+{% extends 'emp_base.html' %}
+
+{% block main %}
+<div class="container mt-4">
+    <div class="card shadow-lg border-0 rounded-4">
+        <div class="card-header bg-gradient text-white text-center" 
+             style="background: linear-gradient(90deg, #ff8c00, #ff4500); border-radius: 10px 10px 0 0;">
+            <h4><i class="fas fa-user-edit"></i> Update Profile</h4>
+        </div>
+        <div class="card-body">
+            <form method="post">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label><i class="fas fa-user"></i> First Name</label>
+                            <input type="text" name="firstname" class="form-control" placeholder="Enter First Name" pattern="[A-Za-z]+" value="{{ employee.user.first_name }}">
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label><i class="fas fa-user"></i> Last Name</label>
+                            <input type="text" name="lastname" class="form-control" placeholder="Enter Last Name" pattern="[A-Za-z]+" value="{{ employee.user.last_name }}">
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label><i class="fas fa-id-badge"></i> Employee Code</label>
+                            <input type="text" name="empcode" class="form-control" placeholder="Enter Employee Code" pattern="[0-9]+" value="{{ employee.empcode }}">
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label><i class="fas fa-briefcase"></i> Designation</label>
+                            <input type="text" name="designation" class="form-control" placeholder="Enter Designation" value="{{ employee.designation }}">
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label><i class="fas fa-building"></i> Department</label>
+                            <input type="text" name="department" class="form-control" placeholder="Enter Department" value="{{ employee.empdept }}">
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label><i class="fas fa-phone-alt"></i> Contact</label>
+                            <input type="text" name="contact" class="form-control" placeholder="Enter Contact Number" value="{{ employee.contact }}">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label><i class="fas fa-envelope"></i> Email ID</label>
+                            <input type="email" name="email" class="form-control" placeholder="Enter Email ID" value="{{ employee.user.username }}">
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label><i class="fas fa-calendar-alt"></i> Joining Date</label>
+                            <input type="date" name="jdate" class="form-control" value="{{ employee.joiningdate }}">
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label><i class="fas fa-venus-mars"></i> Gender</label>
+                            <select name="gender" class="form-control">
+                                <option value="None">Select Gender</option>
+                                <option value="Male" {% if employee.gender == "Male" %} selected {% endif %}>Male</option>
+                                <option value="Female" {% if employee.gender == "Female" %} selected {% endif %}>Female</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-3">
+                    <input type="submit" value="Update Profile" class="btn btn-primary px-4">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% if error == "no" %}
+<script>
+    alert('Profile updated successfully');
+    window.location = ('{% url "profile" %}')
+</script>
+{% elif error == "yes" %}
+<script>
+    alert('Something went wrong, please try again.');
+</script>
+{% endif %}
+
+{% endblock %}

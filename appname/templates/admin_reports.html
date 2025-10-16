@@ -1,0 +1,41 @@
+{% extends 'admin_base.html' %}
+
+{% block main %}
+<div class="container mt-4">
+    <h4 class="text-white p-3 bg-gradient" style="background: linear-gradient(90deg, #007bff, #0056b3); border-radius: 10px;">
+        <i class="fas fa-chart-line"></i> Employee Reports
+    </h4>
+
+    <div class="card mt-3 shadow-lg border-0">
+        <div class="card-body">
+            <h5 class="text-dark fw-bold"><i class="fas fa-users"></i> Employee Details</h5>
+            <table class="table table-bordered table-hover">
+                <thead class="bg-primary text-white">
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Emp Code</th>
+                        <th>Department</th>
+                        <th>Contact</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for emp in employees %}
+                    <tr>
+                        <td>{{ emp.id }}</td>
+                        <td>{{ emp.user.first_name }} {{ emp.user.last_name }}</td>
+                        <td>{{ emp.empcode }}</td>
+                        <td>{{ emp.empdept }}</td>
+                        <td>{{ emp.contact }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="5" class="text-center text-danger">No employees found.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

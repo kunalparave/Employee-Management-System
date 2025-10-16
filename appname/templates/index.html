@@ -1,0 +1,41 @@
+{% load static %}
+{% include "header.html" %}
+
+<div id="demo" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ul class="carousel-indicators">
+      <li data-target="#demo" data-slide-to="0" class="active"></li>
+      <li data-target="#demo" data-slide-to="1"></li>
+    </ul>
+    
+    <!-- The slideshow -->
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="{% static 'images/modern-equipped-computer-lab.jpg' %}" alt="Los Angeles" width="100%" height="480">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'images/SRMx4L.gif' %}" alt="Chicago" width="100%" height="500">
+      </div>
+    </div>
+    
+    <!-- Left and right controls -->
+    <a class="carousel-control-prev" href="#demo" data-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#demo" data-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </a>
+</div>
+
+<!-- Footer Section -->
+<div class="container-fluid bg-dark py-1 text-center d-flex justify-content-between align-items-center px-4">
+    <h4 class="text-light mx-auto">Employee Management System</h4>
+    <div class="text-right">
+        <p class="text-light mt-2 mb-0">Developed by <span class="text-danger fw-bold">Kunal Parave</span></p>
+        <p class="text-light mb-0">Follow me on Instagram: 
+            <a href="https://www.instagram.com/kunalparave" target="_blank" class="text-info fw-bold">
+                <img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png" alt="Instagram" width="20" height="20"> @kunalparave
+            </a>
+        </p>
+    </div>
+</div>

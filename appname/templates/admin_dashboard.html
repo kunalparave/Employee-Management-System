@@ -1,0 +1,38 @@
+{% extends 'admin_base.html' %}
+
+{% block main %}
+<div class="container mt-4">
+    <h4 class="text-white p-3 bg-gradient" style="background: linear-gradient(90deg, #ff8c00, #ff4500); border-radius: 10px;">
+        <i class="fas fa-tachometer-alt"></i> Admin Dashboard
+    </h4>
+
+    <div class="row text-center mt-4">
+        <div class="col-md-4">
+            <div class="card shadow-lg border-0 p-3">
+                <h5 class="text-primary"><i class="fas fa-users"></i> Total Employees</h5>
+                <h3 class="fw-bold">{{ total_employees }}</h3>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow-lg border-0 p-3">
+                <h5 class="text-success"><i class="fas fa-user-graduate"></i> Education Records</h5>
+                <h3 class="fw-bold">{{ total_education }}</h3>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow-lg border-0 p-3">
+                <h5 class="text-danger"><i class="fas fa-briefcase"></i> Experience Records</h5>
+                <h3 class="fw-bold">{{ total_experience }}</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center mt-4">
+        <a href="{% url 'admin_reports' %}" class="btn btn-primary px-4">
+            <i class="fas fa-chart-line"></i> View Reports
+        </a>
+    </div>
+</div>
+{% endblock %}
