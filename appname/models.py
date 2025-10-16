@@ -44,7 +44,7 @@ class EmployeeExperience(models.Model):
     company1desig=models.CharField(max_length=50,null=True)
     company1salary=models.CharField(max_length=100,null=True)
     company1duretion=models.CharField(max_length=100)
-    company2name=models.CharField(max_length=100,null=True)
+    company2name=models.CharField(max_length=150,null=True)
     company2desig=models.CharField(max_length=100,null=True)
     company2salary=models.CharField(max_length=100,null=True)
     company2duretion=models.CharField(max_length=100)
